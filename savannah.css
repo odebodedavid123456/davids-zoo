@@ -1,0 +1,460 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.sav {
+    text-align: center;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 40px 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+}
+
+.sav h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    animation: fadeInDown 1s ease-out;
+}
+
+.sav p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sav-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.sav-nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sav-nav a:hover {
+    background: rgba(255, 107, 53, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.sav-intro {
+    max-width: 900px;
+    margin: 30px auto;
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.sav-intro h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.sav-intro p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #555;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.sav-class {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sav-list {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    overflow: hidden;
+    text-align: center;
+    padding: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.sav-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 25px;
+}
+
+.sav-list:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.sav-list:hover::before {
+    opacity: 1;
+}
+
+/* Image Container with Overlay */
+.image-container {
+    position: relative;
+    margin: 20px 20px 0 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.image-container img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.image-container .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover .overlay {
+    transform: translateY(0);
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+}
+
+.sav-list:hover .image-container {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+
+.sav-list h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 25px 20px 15px 20px;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.animal-info {
+    font-size: 16px;
+    color: #666;
+    margin: 0 20px 20px 20px;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.learn-more-content {
+    display: none;
+    margin: 0 20px 20px 20px;
+    padding: 20px;
+    background: rgba(255, 107, 53, 0.1);
+    border-radius: 15px;
+    border-left: 4px solid #ff6b35;
+}
+
+.learn-more-content h4 {
+    color: #2c3e50;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.learn-more-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.learn-more-content li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+    font-size: 14px;
+    color: #555;
+}
+
+.learn-more-content li:last-child {
+    border-bottom: none;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    margin: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.learn-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, #e55a2b 0%, #e67e22 100%);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* For tablets and smaller devices */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .sav {
+        padding: 30px 20px;
+        margin-bottom: 20px;
+    }
+
+    .sav h1 {
+        font-size: 36px;
+    }
+
+    .sav-nav ul {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .sav-nav a {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .sav-intro {
+        padding: 30px 15px;
+        margin: 20px auto;
+    }
+
+    .sav-intro h2 {
+        font-size: 28px;
+    }
+
+    .sav-intro p {
+        font-size: 18px;
+    }
+
+    .sav-class {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px 15px;
+    }
+
+    .image-container {
+        margin: 15px 15px 0 15px;
+    }
+
+    .image-container img {
+        height: 200px;
+    }
+
+    .sav-list h2 {
+        font-size: 24px;
+        margin: 20px 15px 10px 15px;
+    }
+
+    .animal-info {
+        margin: 0 15px 15px 15px;
+        font-size: 15px;
+    }
+
+    .learn-more-content {
+        margin: 0 15px 15px 15px;
+        padding: 15px;
+    }
+
+    .learn-more-btn {
+        margin: 15px;
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    .sav {
+        padding: 20px 15px;
+    }
+
+    .sav h1 {
+        font-size: 28px;
+    }
+
+    .sav-nav ul {
+        gap: 1rem;
+    }
+
+    .sav-nav a {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .sav-intro {
+        padding: 20px 10px;
+    }
+
+    .sav-intro h2 {
+        font-size: 24px;
+    }
+
+    .sav-intro p {
+        font-size: 16px;
+    }
+
+    .sav-class {
+        padding: 15px 10px;
+        gap: 15px;
+    }
+
+    .image-container {
+        margin: 10px 10px 0 10px;
+    }
+
+    .image-container img {
+        height: 180px;
+    }
+
+    .sav-list h2 {
+        font-size: 20px;
+        margin: 15px 10px 8px 10px;
+    }
+
+    .animal-info {
+        margin: 0 10px 10px 10px;
+        font-size: 14px;
+    }
+
+    .learn-more-content {
+        margin: 0 10px 10px 10px;
+        padding: 12px;
+    }
+
+    .learn-more-content h4 {
+        font-size: 16px;
+    }
+
+    .learn-more-content li {
+        font-size: 13px;
+        padding: 6px 0;
+    }
+
+    .learn-more-btn {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
