@@ -86,7 +86,7 @@ body {
 .home-section {
     text-align: center;
     padding: 100px 60px;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('image/jungle\ 1.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('jungle\ 1.jpg') no-repeat center center/cover;
     color: white;
     border-radius: 20px;
     margin-top: 20px;
@@ -690,4 +690,5 @@ html {
     .footer-section h4 {
         font-size: 16px;
     }
+
 }
